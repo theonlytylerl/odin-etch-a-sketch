@@ -1,5 +1,5 @@
 const containerSize = 720;
-const borderSize = 1.82; // Length of the border
+const borderSize = 2; // Length of the border
 let userHeight = 16;
 let userWidth = 16;
 let boxSize = [0, 0] // [height, width]
@@ -37,6 +37,9 @@ makeGrid = (userHeight, userWidth) => {
         etchBox.style.width = boxSize[1].toString() + "px";
         etchBox.addEventListener("mouseover", () => {
             etchBox.style.backgroundColor = randomColor();
+            let boxOpacity = Number(etchBox.style.opacity);
+            boxOpacity += .1;
+            etchBox.style.opacity = boxOpacity.toString();
         });
         container.appendChild(etchBox);
     }
