@@ -1,3 +1,20 @@
+.containerWrapper {
+    display: flex;
+    justify-content: center;
+}
+
 .container {
-    
+    display: flex;
+    flex-wrap: wrap;
+
+    width: calc(calc(14px * 16) + calc(16 * 1.81px));
+    height: calc(calc(14px * 16) + calc(16 * 1.81px));
+}
+
+.boxes {
+    width: 14px;
+    height: 14px;
+    background-color: white;
+    border: 1px solid;
+    border-color: black;
 }
