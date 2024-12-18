@@ -3,6 +3,7 @@ const borderSize = 2; // Length of the border
 let userHeight = 16;
 let userWidth = 16;
 let boxSize = [0, 0] // [height, width]
+let opacityToggle = 0
 
 const container = document.querySelector(".container");
 const letters = ["A","B","C","D","E","F"];
@@ -37,9 +38,17 @@ makeGrid = (userHeight, userWidth) => {
         etchBox.style.width = boxSize[1].toString() + "px";
         etchBox.addEventListener("mouseover", () => {
             etchBox.style.backgroundColor = randomColor();
-            let boxOpacity = Number(etchBox.style.opacity);
-            boxOpacity += .1;
-            etchBox.style.opacity = boxOpacity.toString();
+            if (opacityToggle == 1) {
+                let boxOpacity = Number(etchBox.style.opacity);
+                if (boxOpacity == 1){
+                    etchBox.style.opacity = 0;
+                } else {
+                    boxOpacity += .1;
+                    etchBox.style.opacity = boxOpacity.toString();
+                }
+            } else {
+                etchBox.style.opacity = 1;
+            }
         });
         container.appendChild(etchBox);
     }
@@ -52,7 +61,7 @@ grid = (height, width) => {
 const resizeButton = document.querySelector(".resizeButton");
 resizeButton.addEventListener("click", () => {
     userHeight = prompt("Enter the new height you want (up to 100).");
-    userWidth = userHeight
+    userWidth = userHeight;
     while (userHeight > 100 || userHeight > 100 || userHeight < 1 || userWidth < 1) {
         if (userHeight > 100 || userHeight < 1) {
             userHeight = prompt("Height Error, enter a new value");
@@ -72,6 +81,16 @@ resizeButton.addEventListener("click", () => {
 
     makeGrid(userHeight, userWidth);
 });
+
+// Allows user to enable or disable the opacity feature for the boxes.
+const opacityButton = document.querySelector(".opacityToggle");
+opacityButton.addEventListener("click", () => {
+    if (opacityToggle == 0) {
+        opacityToggle = 1
+    } else {
+        opacityToggle = 0
+    }
+})
 
 // Initial grid
 grid(userHeight, userWidth)
