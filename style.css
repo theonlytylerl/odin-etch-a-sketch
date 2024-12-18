@@ -18,3 +18,9 @@
     border: 1px solid;
     border-color: black;
 }
+
+button {
+    height: 50px;
+    width: 90px;
+    margin-right: 150px;
+}
