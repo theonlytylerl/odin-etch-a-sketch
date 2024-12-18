@@ -65,11 +65,8 @@ resizeButton.addEventListener("click", () => {
     while (userHeight > 100 || userHeight > 100 || userHeight < 1 || userWidth < 1) {
         if (userHeight > 100 || userHeight < 1) {
             userHeight = prompt("Height Error, enter a new value");
+            userWidth = userHeight;
         } 
-        
-        if (userWidth > 100 || userWidth < 1) {
-            userWidth = prompt("Width Error, enter a new width");
-        }
     }
 
     let numberOfBoxes = container.childElementCount;
