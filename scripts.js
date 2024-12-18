@@ -1,10 +1,25 @@
 const containerSize = 720;
-const borderSize = 1.829; // Length of the border
+const borderSize = 1.82; // Length of the border
 let userHeight = 16;
 let userWidth = 16;
 let boxSize = [0, 0] // [height, width]
 
 const container = document.querySelector(".container");
+const letters = ["A","B","C","D","E","F"];
+let number = 0;
+
+randomColor = () => {
+    let color = "#";
+    for (let i = 0; i < 6; i++) {
+        let random = Math.random();
+        if (random < .5) {
+            color += `${Math.floor(Math.random()*10)}`;
+        } else {
+            color += letters[Math.floor(Math.random()*6)];
+        }
+    }
+    return color;
+}
 
 
 findBoxSize = (height, width) => {
@@ -21,7 +36,7 @@ makeGrid = (userHeight, userWidth) => {
         etchBox.style.height = boxSize[0].toString() + "px";
         etchBox.style.width = boxSize[1].toString() + "px";
         etchBox.addEventListener("mouseover", () => {
-            etchBox.style.backgroundColor = "black";
+            etchBox.style.backgroundColor = randomColor();
         });
         container.appendChild(etchBox);
     }
@@ -57,3 +72,4 @@ resizeButton.addEventListener("click", () => {
 
 // Initial grid
 grid(userHeight, userWidth)
+console.log(randomColor())
